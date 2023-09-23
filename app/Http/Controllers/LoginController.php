@@ -13,4 +13,12 @@ class LoginController extends Controller
     {
         return view('login');
     }
+
+    /**
+     * ログインする。
+     */
+    public function login()
+    {
+        return redirect('home');
+    }
 }
