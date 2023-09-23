@@ -7,7 +7,13 @@
 </head>
 <body>
     <main>
-        <p>ログインする</p>
+        <form action="" method="post">
+            <label for="email">メールアドレス</label>
+            <input type="text" name="email" id="email">
+            <label for="password">パスワード</label>
+            <input type="password" name="password" id="password">
+            <button type="submit">ログインする</button>
+        </form>
     </main>
 </body>
 </html>
