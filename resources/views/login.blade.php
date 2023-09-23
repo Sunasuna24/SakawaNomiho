@@ -8,6 +8,7 @@
 <body>
     <main>
         <form action="" method="post">
+            <p>ログインする</p>
             <label for="email">メールアドレス</label>
             <input type="text" name="email" id="email">
             <label for="password">パスワード</label>
