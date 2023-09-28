@@ -7,8 +7,9 @@
 </head>
 <body>
     <main>
-        <form action="" method="post">
+        <form action="{{ route('login.login') }}" method="post">
             <p>ログインする</p>
+            @csrf
             <label for="email">メールアドレス</label>
             <input type="text" name="email" id="email">
             <label for="password">パスワード</label>
