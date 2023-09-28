@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class LoginController extends Controller
 {
@@ -17,8 +18,18 @@ class LoginController extends Controller
     /**
      * ログインする。
      */
-    public function login()
+    public function login(Request $request)
     {
-        return redirect('home');
+        $credentials = [
+            "email" => $request->email,
+            "password" => $request->password,
+        ];
+
+        if (Auth::attempt($credentials)) {
+            // 
+            return redirect()->route('home');
+        }
+
+        return redirect()->back();
     }
 }
