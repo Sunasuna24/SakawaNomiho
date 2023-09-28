@@ -20,10 +20,10 @@ class LoginController extends Controller
      */
     public function login(Request $request)
     {
-        $credentials = [
-            "email" => $request->email,
-            "password" => $request->password,
-        ];
+        $credentials = $request->validate([
+            'email' => ['required', 'email'],
+            'password' => ['required'],
+        ]);
 
         if (Auth::attempt($credentials)) {
             $request->session()->regenerate();
