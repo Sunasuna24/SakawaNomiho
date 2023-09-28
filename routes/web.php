@@ -14,13 +14,17 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
+Route::group(["middleware" => "guest"], function () {
+    Route::get('/', function () {
+        return view('welcome');
+    });
+
+    Route::get("/login", [LoginController::class, 'index'])->name('login.index');
+    Route::post("/login", [LoginController::class, 'login'])->name('login.login');
 });
 
-Route::get("/login", [LoginController::class, 'index'])->name('login.index');
-Route::post("/login", [LoginController::class, 'login'])->name('login.login');
-
-Route::get('/home', function () {
-    return view('home');
-})->name('home');
+Route::group(["middleware" => "auth"], function () {
+    Route::get('/home', function () {
+        return view('home');
+    })->name('home');
+});
